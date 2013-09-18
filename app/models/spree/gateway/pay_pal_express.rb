@@ -6,7 +6,7 @@ module Spree
     preference :signature, :string
     preference :server, :string, default: 'sandbox'
 
-    attr_accessible :preferred_login, :preferred_password, :preferred_signature
+    #attr_accessible :preferred_login, :preferred_password, :preferred_signature
 
     def provider_class
       ::PayPal::SDK::Merchant::API.new
@@ -80,7 +80,7 @@ module Spree
           :refund_transaction_id => refund_transaction_response.RefundTransactionID,
           :state => "refunded",
           :refund_type => refund_type
-        }, :without_protection => true)
+        })
       end
       refund_transaction_response
     end
